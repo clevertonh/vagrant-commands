@@ -12,6 +12,8 @@ Começou a utilizar o Vagrant recentemente? Esse documento deve lhe dar os princ
 * [Obtendo máquinas pré-instaladas](#obtendo-maquinas-pre-instaladas)
 * [Lista de BOX para download](#lista-de-box-para-download)
 * [Catálogos de BOX para download](#catalogo-de-box-para-download)
+* [Configurando projeto](#configurando-projeto)
+* [Comandos básicos](#comandos-basicos)
 
 #### Vagrant
 
@@ -43,6 +45,11 @@ $ sudo apt-get install virtualbox-dkms
 
 O comando abaixo irá fazer o download da BOX do endereço informado e salvando com o nome 'precise32' para que posteriormente possamos criar máquinas virtuais com essa imagem.
 ```sh
+$ vagrant box add {nome_da_box} {url}
+```
+
+###### Exemplo
+```sh
 $ vagrant box add precise32 http://files.vagrantup.co/mprecise32.box
 ```
 
@@ -63,3 +70,47 @@ Instalações de máquinas WINDOWS com as diversas versões do Internet Explorer
 ##### Catálogos de BOX para download
 
 - https://atlas.hashicorp.com/boxes/search
+
+#### Configurando projeto
+
+Crie um diretório raiz para o seu projeto, em seguida, crie o 'vagrant file' dentro do diretório do projeto.
+
+```sh
+$ mkdir {nome_do_projeto}
+$ cd {nome_do_projeto}
+$ vagrant init {nome_da_box}
+```
+
+###### Exemplo
+```sh
+$ mkdir vagrant_project
+$ cd vagrant_project
+$ vagrant init precise32
+```
+
+#### Comandos básicos
+
+Para executar os comandos na VM, você deve estar do diretório da VM em questão.
+
+```sh
+# Faz o boot na máquina virtual e executa os provisioners definidos. 
+$ vagrant up
+
+# Faz login na máquina virtual, não precisa de login ou senha.
+$ vagrant ssh
+
+# Reinicia a máquina virtual. Útil principalmente quando há mudanças no Vagrantfile
+$ vagrant reload
+
+# Roda apenas os provisioners, sem reiniciar a máquina. Útil após fazer pequenas modificações no provisionamento
+$ vagrant provision
+
+# Destrói a máquina virtual. Use quando quiser começar do zero com um vagrant up vagrant halt  - "desliga" a máquina, equivalente a um shutdown
+$ vagrant destroy
+
+# Suspende a execução da máquina virtual salvando seu estado (ideal para o dia-a-dia quando desenvolvendo)
+$ vagrant suspend
+
+# Retoma uma máquina virtual previamente suspensa
+$ vagrant resume
+```
