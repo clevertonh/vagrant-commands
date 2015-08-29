@@ -99,13 +99,16 @@ $ vagrant up
 # Faz login na máquina virtual, não precisa de login ou senha.
 $ vagrant ssh
 
-# Reinicia a máquina virtual. Útil principalmente quando há mudanças no Vagrantfile
+# Reinicia a máquina virtual.
+# Útil principalmente quando há mudanças no Vagrantfile
 $ vagrant reload
 
-# Roda apenas os provisioners, sem reiniciar a máquina. Útil após fazer pequenas modificações no provisionamento
+# Roda apenas os provisioners, sem reiniciar a máquina.
+# Útil após fazer pequenas modificações no provisionamento
 $ vagrant provision
 
-# Destrói a máquina virtual. Use quando quiser começar do zero com um vagrant up vagrant halt  - "desliga" a máquina, equivalente a um shutdown
+# Destrói a máquina virtual. 
+# Use quando quiser começar do zero com um vagrant up vagrant halt  - "desliga" a máquina, equivalente a um shutdown
 $ vagrant destroy
 
 # Suspende a execução da máquina virtual salvando seu estado (ideal para o dia-a-dia quando desenvolvendo)
